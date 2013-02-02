@@ -1,5 +1,6 @@
 module ListOps where
 
-mean :: (Fractional a) => [a] -> a
-mean xs = (sum xs) / (fromIntegral (length xs))
+mean :: (Fractional a) => [a] -> Maybe a
+mean [] = Nothing
+mean xs = Just (sum xs) / (fromIntegral (length xs))
 

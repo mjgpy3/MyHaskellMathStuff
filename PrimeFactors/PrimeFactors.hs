@@ -13,6 +13,7 @@ getPrimeFactors n = lookForPrimeFactorsFrom n 2
 
 isPrime 2 = True
 isPrime n
+ | n < 2     = False
  | even n    = False
  | otherwise = lookForPrimeFrom n 5
 

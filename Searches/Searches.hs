@@ -14,8 +14,8 @@ binarySearch l e = performBinarySearch l e 0 (length l)
 performBinarySearch l e beg last
  | lookat == e = Just i
  | endCase     = Nothing
- | lookat < e  = (performBinarySearch l e i last)
- | lookat > e  = (performBinarySearch l e beg i)
+ | lookat < e  = performBinarySearch l e i last
+ | lookat > e  = performBinarySearch l e beg i
  where i = quot (beg+last) 2
        lookat = l !! i
        endCase =  beg == last || beg == i || last == i

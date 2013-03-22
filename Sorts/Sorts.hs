@@ -1,6 +1,6 @@
-module Sorts where
+module Sorts (quickSort) where
 
-quickSort :: (Ord a) => [a] -> [a]
+quickSort :: Ord a => [a] -> [a]
 
 quickSort [] = []
 quickSort (x:xs) = quickSort less ++ [x] ++ quickSort greater

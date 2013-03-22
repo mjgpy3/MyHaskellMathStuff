@@ -1,14 +1,18 @@
-module Searches where
+module Searches (binarySearch, iterativeSearch) where
 
-binarySearch :: Ord a => [a] -> a -> Int -> Int -> Maybe Int
+binarySearch :: Ord a => [a] -> a -> Maybe Int
+performBinarySearch :: Ord a => [a] -> a -> Int -> Int -> Maybe Int
 
-binarySearch l e beg last
+binarySearch l e = performBinarySearch l e 0 (length l)
+
+performBinarySearch l e beg last
  | lookat == e = Just i
- | i == (length l)-1 || i == 0 = Nothing
- | lookat < e = (binarySearch l e i last)
- | lookat > e = (binarySearch l e beg i)
+ | endCase     = Nothing
+ | lookat < e  = (performBinarySearch l e i last)
+ | lookat > e  = (performBinarySearch l e beg i)
  where i = quot (beg+last) 2
        lookat = l !! i
+       endCase =  beg == last || beg == i || last == i
 
 -- Used to call the other guy with a 0
 iterativeSearch :: (Eq a) => [a] -> a -> Maybe Int

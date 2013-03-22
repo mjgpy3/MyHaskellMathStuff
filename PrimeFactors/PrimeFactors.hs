@@ -9,22 +9,21 @@ lookForPrimeFrom :: Integer -> Integer -> Bool
 isPrimeFactor :: Integer -> Integer -> Bool
 lookForPrimeFactorsFrom :: Integer -> Integer -> [Integer]
 
-getPrimeFactors n = lookForPrimeFactorsFrom n 2
-
-isPrime 2 = True
 isPrime n
- | n < 2     = False
+ | n <= 2    = n == 2
  | even n    = False
  | otherwise = lookForPrimeFrom n 5
 
 lookForPrimeFrom n i
- | ceiling (sqrt (fromIntegral n))+1 < i   = True
- | (n `mod` i) == 0                        = False
- | otherwise                               = lookForPrimeFrom n (i+2)
+ | ceiling (sqrt (fromIntegral n))+1 < i  = True
+ | (n `mod` i) == 0                       = False
+ | otherwise                              = lookForPrimeFrom n (i+2)
+
+getPrimeFactors n = lookForPrimeFactorsFrom n 2
  
 lookForPrimeFactorsFrom n i
  | n <= 1         = []
  | n `mod` i == 0 = i:lookForPrimeFactorsFrom (n `quot` i) i 
  | otherwise      = lookForPrimeFactorsFrom n (i+1)
 
-isPrimeFactor x y = y `mod` x == 0 && isPrime(x)
+isPrimeFactor x y = y `mod` x == 0 && isPrime x

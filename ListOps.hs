@@ -6,7 +6,7 @@ min' :: (Ord a) => [a] -> a
 
 -- If an empty is given return Nothing otherwise return the mean
 mean [] = Nothing
-mean xs = Just (sum xs) / (fromIntegral (length xs))
+mean xs = Just (sum xs) / fromIntegral (length xs)
 
 max' (x:[]) = x
 max' (x:y:xs)

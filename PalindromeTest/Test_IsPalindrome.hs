@@ -21,11 +21,15 @@ test9988008899IsAPalindrome =
 test12345IsNotAPalindrome =
   TestCase (assertEqual "12345 is not a palindrome" False (isPalindrome (show 12345)))
 
+testEmptyStringIsNotAPalindrome =
+  TestCase (assertEqual "Empty string is not a palindrome" False (isPalindrome ""))
+
 tests = TestList [testSingleLetterIsPalindrome,
                   testTwoOfTheSameLettersIsAPalindrome,
                   testRandomStringOfLettersThatIsNotAPalindromeIsNotAPalindrome,
                   testLowerRacecarIsAPalindrome,
                   test9988008899IsAPalindrome,
-                  test12345IsNotAPalindrome]
+                  test12345IsNotAPalindrome,
+                  testEmptyStringIsNotAPalindrome]
 
 main = runTestTT tests

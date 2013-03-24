@@ -15,6 +15,9 @@ testThreeIsPrime =
 testFourIsNotPrime =
  TestCase (assertEqual "4 should not be prime" False (isPrime 4))
 
+testNineIsNotPrime =
+ TestCase (assertEqual "9 should not be prime" False (isPrime 9))
+
 testFifteenIsNotPrime =
  TestCase (assertEqual "15 should not be prime" False (isPrime 15))
 
@@ -46,10 +49,15 @@ testTwoTwoAndThreeAreThePrimeFactorsOfTwelve =
 testThreeAndFiveAreThePrimeFactorsOfFifteen =
  TestCase (assertEqual "15 -> [3,5]" [3,5] (getPrimeFactors 15))
 
+testNthPrimeReturnsANiceListOfPrimes =
+ TestCase (assertEqual "1st 9 primes should be [2, 3, 5, 7, 11, 13, 17, 19, 23]"
+ [2, 3, 5, 7, 11, 13, 17, 19, 23] [nthPrime n | n <- [1..9]])
+
 tests = TestList [testFiveIsPrime,
                   testTwoIsPrime,
                   testThreeIsPrime,
                   testFourIsNotPrime,
+                  testNineIsNotPrime,
                   testFifteenIsNotPrime,
                   testSixIsNotPrime,
                   testTwentyNineIsNotPrime,
@@ -59,6 +67,7 @@ tests = TestList [testFiveIsPrime,
                   testTwoAndThreeAreThePrimeFactorsOfSix,
                   testThreeAndThreeAreThePrimeFactorsOfNine,
                   testTwoTwoAndThreeAreThePrimeFactorsOfTwelve,
-                  testThreeAndFiveAreThePrimeFactorsOfFifteen]
+                  testThreeAndFiveAreThePrimeFactorsOfFifteen,
+                  testNthPrimeReturnsANiceListOfPrimes]
 
 main = runTestTT tests

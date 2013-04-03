@@ -38,8 +38,7 @@ numeralFromIntegral n = case n of
  900 ->   "CM"
  _ -> nonSimplisticNFromI n 1
 
-nonSimplisticNFromI n e
- | n == 0    = ""
- | otherwise = nonSimplisticNFromI (n - lastDig) (e + 1) ++ 
+nonSimplisticNFromI 0 _ = ""
+nonSimplisticNFromI n e = nonSimplisticNFromI (n - lastDig) (e + 1) ++ 
                           numeralFromIntegral lastDig
  where lastDig = n `mod` 10^e

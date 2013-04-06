@@ -25,8 +25,3 @@ bestGame (g1@(VideoGame _ r1 _):g2@(VideoGame _ r2 _):gs)
 sortByRating [] = []
 sortByRating [g] = [g]
 sortByRating  gs = [fromJust (bestGame gs)]
-
-a = VideoGame "test" 0.0 1
-b = VideoGame "" 0.0 1
-
-main = print (a == b)

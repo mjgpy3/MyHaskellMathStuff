@@ -14,6 +14,8 @@ vgl = [VideoGame "Goldeneye 007" 9.6 1997,
        VideoGame "Doom 3" 8.9 2004,
        VideoGame "Morrowind" 9.6 2003]
 
+vgl2 = extra_game:vgl
+
 list_of_ints = [1,2..20]
 expected_list_of_ints = [1,2..20] \\ [3]
 
@@ -35,10 +37,18 @@ testRemoveFromListWorksForANonSetLikeCollection =
 testIfToldToRemoveSomethingNotInTheListThenReturnTheList = 
   TestCase (assertEqual "If not in list, return the whole thing" vgl (removeFromList extra_game vgl))
 
+testRemovingSomethingFromTheEmptyListReturnsTheEmptyList =
+  TestCase (assertEqual "Removing something from [] yields []" [] (removeFromList 2354 []))
+
+testCanDeleteAVideoGameFromAListOfVideoGames =
+  TestCase (assertEqual "Should be able to successfully delete a video game" vgl (removeFromList extra_game vgl2))
+
 tests = TestList [testBioshockInfiniteIsRankedBestGame,
                   testGamesAreEquatable,
                   testRemoveFromListRemovesFromListSuccessfully,
                   testRemoveFromListWorksForANonSetLikeCollection,
-                  testIfToldToRemoveSomethingNotInTheListThenReturnTheList]
+                  testIfToldToRemoveSomethingNotInTheListThenReturnTheList,
+                  testRemovingSomethingFromTheEmptyListReturnsTheEmptyList,
+                  testCanDeleteAVideoGameFromAListOfVideoGames]
 
 main = runTestTT tests

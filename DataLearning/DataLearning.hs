@@ -19,20 +19,19 @@ data VideoGame = VideoGame { title :: String,
 betterGame :: VideoGame -> VideoGame -> VideoGame
 
 betterGame g1@(VideoGame _ r1 _) g2@(VideoGame _ r2 _)
- | r1 > r2  = g1
+ | r1 > r2   = g1
  | otherwise = g2
 
 bestGame [] = Nothing
 bestGame [g] = Just g
 bestGame (g1:g2:gs) = bestGame ((betterGame g1 g2):gs)
 
-sortByRating [] = []
-sortByRating [g] = [g]
-sortByRating  gs = currentTop:(removeFromList currentTop gs)
- where currentTop = fromJust (bestGame gs)
+sortByRating  gs
+ | length gs <= 1  = gs
+ | otherwise       = currentBest:removeFromList currentBest gs
+ where currentBest = fromJust (bestGame gs)
 
 removeFromList _ [] = []
-removeFromList e [x] = if e == x then [] else [x]
 removeFromList e (x:xs)
  | e == x    = xs
  | otherwise = x:removeFromList e xs

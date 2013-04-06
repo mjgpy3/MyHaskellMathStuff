@@ -1,7 +1,8 @@
 module DataLearning (VideoGame(VideoGame),
                      title, rating, year,
                      bestGame,
-                     sortByRating) where
+                     sortByRating,
+                     removeFromList) where
 
 import Data.Maybe
 
@@ -14,7 +15,7 @@ data VideoGame = VideoGame { title :: String,
                              year :: Int } deriving (Show, Eq)
 
 -- Private
---removeFromList
+removeFromList :: (Eq a) => a -> [a] -> [a]
 
 bestGame [] = Nothing
 bestGame [g@(VideoGame _ _ _)] = Just g
@@ -25,3 +26,8 @@ bestGame (g1@(VideoGame _ r1 _):g2@(VideoGame _ r2 _):gs)
 sortByRating [] = []
 sortByRating [g] = [g]
 sortByRating  gs = [fromJust (bestGame gs)]
+
+removeFromList _ [] = []
+removeFromList e (x:xs)
+ | e == x    = xs
+ | otherwise = x:removeFromList e xs

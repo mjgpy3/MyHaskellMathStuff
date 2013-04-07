@@ -38,6 +38,12 @@ testBestGameWorksIfAtTheEnd =
 testGamesAreEquatable =
   TestCase (assertEqual "A = A" True (vgl !! 0 == vgl !! 0))
 
+testGamesWithTheSameDataAreTheSame =
+  TestCase (assertEqual "VideoGame a b c = VideoGame a b c" True (VideoGame "A" 1.0 2000 == VideoGame "A" 1.0 2000))
+
+testGamesWithDifferentDataAreDifferent =
+  TestCase (assertEqual "VideoGame a b c /= VideoGame d e f" True (VideoGame "A" 1.0 2000 /= VideoGame "B" 2.0 3000))
+
 testSortByRatingWorksOnAListOfGames =
   TestCase (assertEqual "sortByRating should work on list of games" vgl_sorted_by_rating (sortByRating vgl))
 
@@ -53,6 +59,8 @@ testIfRedundantBestsSecondIsFound =
 tests = TestList [testBioshockInfiniteIsRankedBestGame,
                   testBestGameWorksIfAtTheEnd,
                   testGamesAreEquatable,
+                  testGamesWithTheSameDataAreTheSame,
+                  testGamesWithDifferentDataAreDifferent,
                   testSortByRatingWorksOnAListOfGames,
                   testSortByYearWorksOnAListOfGames,
                   testSortByTitleWorksOnAListOfGames,

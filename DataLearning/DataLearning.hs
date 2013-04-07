@@ -14,6 +14,7 @@ data VideoGame = VideoGame { title :: String,
 
 -- Private functions
 betterGame :: VideoGame -> VideoGame -> VideoGame
+sortBy :: (Ord a) => (b -> a) -> [b] -> [b]
 
 betterGame g1@(VideoGame _ r1 _) g2@(VideoGame _ r2 _)
  | r1 > r2   = g1
@@ -23,7 +24,9 @@ bestGame [] = Nothing
 bestGame [g] = Just g
 bestGame (g1:g2:gs) = bestGame ((betterGame g1 g2):gs)
 
-sortByRating [] = []
-sortByRating (g:gs) = sortByRating less ++ [g] ++ sortByRating greater
- where less = [e | e <- gs, rating e > rating g]
-       greater = [e | e <- gs, rating e <= rating g]
+sortByRating = sortBy rating
+
+sortBy _ [] = []
+sortBy f (g:gs) = (sortBy f less) ++ [g] ++ (sortBy f greater)
+ where less = [e | e <- gs, f e > f g]
+       greater = [e | e <- gs, f e <= f g]

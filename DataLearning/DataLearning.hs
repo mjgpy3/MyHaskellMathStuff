@@ -24,13 +24,13 @@ betterGame g1@(VideoGame _ r1 _) g2@(VideoGame _ r2 _)
 
 bestGame [] = Nothing
 bestGame [g] = Just g
-bestGame (g1:g2:gs) = bestGame ((betterGame g1 g2):gs)
+bestGame (g1:g2:gs) = bestGame (betterGame g1 g2:gs)
 
 sortByRating = sortBy rating
 sortByYear = sortBy year
 sortByTitle = reverse.sortBy title
 
 sortBy _ [] = []
-sortBy f (g:gs) = (sortBy f less) ++ [g] ++ (sortBy f greater)
+sortBy f (g:gs) = sortBy f less ++ [g] ++ sortBy f greater
  where less = [e | e <- gs, f e > f g]
        greater = [e | e <- gs, f e <= f g]

@@ -26,10 +26,15 @@ bestGame [] = Nothing
 bestGame [g] = Just g
 bestGame (g1:g2:gs) = bestGame ((betterGame g1 g2):gs)
 
-sortByRating  gs
- | length gs <= 1  = gs
- | otherwise       = currentBest:removeFromList currentBest gs
- where currentBest = fromJust (bestGame gs)
+sortByRating [] = []
+sortByRating (g:gs) = sortByRating less ++ [g] ++ sortByRating greater
+ where less = [e | e <- gs, rating e > rating g]
+       greater = [e | e <- gs, rating e <= rating g]
+
+--sortByRating  gs
+-- | length gs <= 1  = gs
+-- | otherwise       = currentBest:removeFromList currentBest gs
+-- where currentBest = fromJust (bestGame gs)
 
 removeFromList _ [] = []
 removeFromList e (x:xs)

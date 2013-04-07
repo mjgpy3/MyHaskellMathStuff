@@ -14,7 +14,7 @@ g4 = VideoGame "Star Wars: Knights of the Old Republic" 9.0 2003
 g5 = VideoGame "Doom 3" 8.9 2004
 g6 = VideoGame "Morrowind" 9.6 2003
 
-vgl = [g1, g2, g6, g3, g4, g5]
+vgl = [g1, g2, g3, g4, g5, g6]
 vgl_sorted_by_rating = [g2, g1, g6, g3, g4, g5]
 
 vgl_redundant_bests = [g1, g3, g4, g5, g6]

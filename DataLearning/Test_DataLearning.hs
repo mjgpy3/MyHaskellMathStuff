@@ -37,24 +37,6 @@ testBestGameWorksIfAtTheEnd =
 testGamesAreEquatable =
   TestCase (assertEqual "A = A" True (vgl !! 0 == vgl !! 0))
 
-testRemoveFromListRemovesFromListSuccessfully =
-  TestCase (assertEqual "Remove 3 from list actually removes it" expected_list_of_ints (removeFromList 3 list_of_ints))
-
-testRemoveFromListWorksForANonSetLikeCollection =
-  TestCase (assertEqual "[3,3,5] - [3] -> [3,5]" expected_randoms (removeFromList 3 few_randoms))
-
-testIfToldToRemoveSomethingNotInTheListThenReturnTheList = 
-  TestCase (assertEqual "If not in list, return the whole thing" vgl (removeFromList extra_game vgl))
-
-testRemovingSomethingFromTheEmptyListReturnsTheEmptyList =
-  TestCase (assertEqual "Removing something from [] yields []" [] (removeFromList 2354 []))
-
-testRemovingSomethingFromTheHighestIndexOfAListWorks =
-  TestCase (assertEqual "Removing 20 from [1..20] yields [1..19]" [1, 2..19] (removeFromList 20 [1,2..20]))
-
-testCanDeleteAVideoGameFromAListOfVideoGames =
-  TestCase (assertEqual "Should be able to successfully delete a video game" vgl (removeFromList extra_game vgl2))
-
 testSortByRatingWorksOnAListOfGames =
   TestCase (assertEqual "sortByRating should work on list of games" vgl_sorted_by_rating (sortByRating vgl))
 
@@ -64,12 +46,6 @@ testIfRedundantBestsSecondIsFound =
 tests = TestList [testBioshockInfiniteIsRankedBestGame,
                   testBestGameWorksIfAtTheEnd,
                   testGamesAreEquatable,
-                  testRemoveFromListRemovesFromListSuccessfully,
-                  testRemoveFromListWorksForANonSetLikeCollection,
-                  testIfToldToRemoveSomethingNotInTheListThenReturnTheList,
-                  testRemovingSomethingFromTheEmptyListReturnsTheEmptyList,
-                  testRemovingSomethingFromTheHighestIndexOfAListWorks,
-                  testCanDeleteAVideoGameFromAListOfVideoGames,
                   testSortByRatingWorksOnAListOfGames,
                   testIfRedundantBestsSecondIsFound]
 

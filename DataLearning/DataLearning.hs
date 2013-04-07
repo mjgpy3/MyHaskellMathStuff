@@ -1,21 +1,18 @@
 module DataLearning (VideoGame(VideoGame),
                      title, rating, year,
                      bestGame,
-                     sortByRating,
-                     removeFromList) where
+                     sortByRating) where
 
-import Data.Maybe
-
--- Public types
+-- Public functions
 bestGame :: [VideoGame] -> Maybe VideoGame
 sortByRating :: [VideoGame] -> [VideoGame]
-removeFromList :: (Eq a) => a -> [a] -> [a]
 
+-- Public data
 data VideoGame = VideoGame { title :: String,
                              rating :: Float,
                              year :: Int } deriving (Show, Eq)
 
--- Private
+-- Private functions
 betterGame :: VideoGame -> VideoGame -> VideoGame
 
 betterGame g1@(VideoGame _ r1 _) g2@(VideoGame _ r2 _)
@@ -30,13 +27,3 @@ sortByRating [] = []
 sortByRating (g:gs) = sortByRating less ++ [g] ++ sortByRating greater
  where less = [e | e <- gs, rating e > rating g]
        greater = [e | e <- gs, rating e <= rating g]
-
---sortByRating  gs
--- | length gs <= 1  = gs
--- | otherwise       = currentBest:removeFromList currentBest gs
--- where currentBest = fromJust (bestGame gs)
-
-removeFromList _ [] = []
-removeFromList e (x:xs)
- | e == x    = xs
- | otherwise = x:removeFromList e xs

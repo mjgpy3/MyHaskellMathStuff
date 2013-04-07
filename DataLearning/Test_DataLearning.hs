@@ -16,9 +16,10 @@ g6 = VideoGame "Morrowind" 9.6 2003
 
 vgl = [g1, g2, g3, g4, g5, g6]
 vgl_sorted_by_rating = [g2, g1, g6, g3, g4, g5]
+vgl_sorted_by_year = [g2, g5, g4, g6, g1, g3]
+vgl_sorted_by_title = [g2, g5, g1, g6, g3, g4]
 
 vgl_redundant_bests = [g1, g3, g4, g5, g6]
-
 vgl_best_at_end = [g1, g3, g4, g5, g6, g2]
 vgl2 = extra_game:vgl
 
@@ -40,6 +41,12 @@ testGamesAreEquatable =
 testSortByRatingWorksOnAListOfGames =
   TestCase (assertEqual "sortByRating should work on list of games" vgl_sorted_by_rating (sortByRating vgl))
 
+testSortByYearWorksOnAListOfGames =
+  TestCase (assertEqual "SortByYear should work on a list of games" vgl_sorted_by_year (sortByYear vgl))
+
+testSortByTitleWorksOnAListOfGames =
+  TestCase (assertEqual "SortByTitle should work on a list of games" vgl_sorted_by_title (sortByTitle vgl))
+
 testIfRedundantBestsSecondIsFound =
   TestCase (assertEqual "When we have redundant best games, the second is the one we care about" g6 (fromJust (bestGame vgl_redundant_bests)))
 
@@ -47,6 +54,8 @@ tests = TestList [testBioshockInfiniteIsRankedBestGame,
                   testBestGameWorksIfAtTheEnd,
                   testGamesAreEquatable,
                   testSortByRatingWorksOnAListOfGames,
+                  testSortByYearWorksOnAListOfGames,
+                  testSortByTitleWorksOnAListOfGames,
                   testIfRedundantBestsSecondIsFound]
 
 main = runTestTT tests

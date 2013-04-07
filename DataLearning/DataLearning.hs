@@ -1,7 +1,9 @@
 module DataLearning (VideoGame(VideoGame),
                      title, rating, year,
                      bestGame,
-                     sortByRating) where
+                     sortByRating,
+                     sortByYear,
+                     sortByTitle) where
 
 -- Public functions
 bestGame :: [VideoGame] -> Maybe VideoGame
@@ -25,6 +27,8 @@ bestGame [g] = Just g
 bestGame (g1:g2:gs) = bestGame ((betterGame g1 g2):gs)
 
 sortByRating = sortBy rating
+sortByYear = sortBy year
+sortByTitle = reverse.sortBy title
 
 sortBy _ [] = []
 sortBy f (g:gs) = (sortBy f less) ++ [g] ++ (sortBy f greater)

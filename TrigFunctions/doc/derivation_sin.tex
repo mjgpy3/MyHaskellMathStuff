@@ -1,0 +1,98 @@
+\documentclass{article}
+
+\begin{document}
+
+To begin with, we know (by the expected form of the Taylor Series) that:
+\[
+  \sin \left( x \right) = A + B x + C x^2 + D x^3 + E x^4 + F x^5...
+\] 
+
+Examining $x = 0$:
+\[
+  \sin \left( 0 \right) = 0 = A
+\]
+
+Deriving the above:
+\[
+  \cos \left( x \right) = B + 2 C x + 3 D x^2 + 4 E x^3 + 5 F x^4 + ...
+\]
+
+Examining $x = 0$:
+\[
+  \cos \left( 0 \right) = 1 = B
+\]
+
+Deriving the above:
+\[
+  - \sin \left( x \right) = 2 C + 6 D x + 12 E x^2 + 20 F x^3 + ...
+\]
+
+Examining $x = 0$:
+\[
+  - \sin \left( 0 \right) = 0 = 2 C \Rightarrow C = 0
+\]
+
+Deriving the above:
+\[
+  - \cos \left( x \right) = 6 D + 24 E x + 60 F x^2 + ...
+\]
+
+Examining $x = 0$:
+\[
+  - \cos \left( 0 \right) = -1 = 6 D \Rightarrow D = - \frac{1}{6}
+\]
+
+Deriving the above:
+\[
+  \sin \left( x \right) = 24 E + 120 F x + ...
+\]
+
+Examining $x = 0$:
+\[
+  \sin \left( 0 \right) = 0 = 24 E \Rightarrow E = 0
+\]
+
+Deriving the above:
+\[
+  \cos \left( x \right) = 120 F + ...
+\]
+
+Examining $x = 0$:
+\[
+  \cos \left( 0 \right) = 1 = 120 F \Rightarrow F = \frac{1}{120}
+\]
+
+So, finally by the Taylor Series equation at the top of this derivation we have:
+\[
+  \sin \left( x \right) = 0 + \left(1\right) x + \left(0\right) x^2 + \left(-\frac{1}{6}\right) x^3 + \left(0\right) x^4 + \left(\frac{1}{120}\right) x^5 ...
+\]
+
+Simplified:
+\[
+  \sin \left( x \right) = x - \frac{1}{6} x^3 + \frac{1}{120} x^5 ...
+\]
+
+Looking at these 3 terms, we can see that the power on $x$ is simply iterating odd numbers, so we need something like:
+\[
+  x^{2 i - 1} \, \forall i \in \{ 1, 2, ...\}
+\]
+to produce the $x$ values to odd exponents.
+
+
+We see that the denominators of the terms is the factorial of the exponent on $x$, so:
+\[
+  \left( 2 i - 1 \right)! \, \forall i \in \{1, 2, ...\}
+\]
+should produce the denominators.
+
+Next we observe that the signs are alternating, so the following will produce them:
+\[
+  \left( -1 \right)^{i-1} \, \forall i \in \{1,2,...\}
+\]
+
+Putting this all together we see that the $\sin$ function can be represented as an infinite sum that looks like:
+\[
+  \sin \left(x \right) = \sum_{i = 1}^{\infty} \frac{x^{2 i - 1}}{\left( 2 i - 1 \right)!} \left( -1 \right)^{i - 1}
+\]
+
+\end{document}

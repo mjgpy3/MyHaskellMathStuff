@@ -1,6 +1,8 @@
 module BesselFunction (factorial,
                        j0) where
 
+-- TODO: refactor so that factorial actually works and isn't dumb
+
 j0 :: (Num a, Fractional a) => a -> Int -> a
 factorial :: Int -> Int
 f :: (Num a, Fractional a) => a -> Int -> a

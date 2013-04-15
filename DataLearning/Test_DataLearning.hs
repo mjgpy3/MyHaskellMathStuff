@@ -5,6 +5,9 @@ import DataLearning
 import Data.Maybe
 import Data.List
 
+testList = Node 5 Nil
+testListTwo = testList `append` (Node 7 Nil)
+
 extraGame = VideoGame "Fallout 3" 8.8 2008
 
 g1 = VideoGame "Goldeneye 007" 9.6 1997

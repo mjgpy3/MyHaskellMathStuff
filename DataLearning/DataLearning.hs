@@ -17,7 +17,7 @@ data VideoGame = VideoGame { title :: String,
                              rating :: Float,
                              year :: Int } deriving (Show, Eq)
 
-data LinkedList a = Nil | Node a (LinkedList a)
+data LinkedList a = Nil | Node a (LinkedList a) deriving (Show)
 
 append node@(Node x nodes) Nil = node
 append (Node x ll) (Node y Nil) = Node y (Node x ll)

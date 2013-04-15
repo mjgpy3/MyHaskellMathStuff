@@ -3,16 +3,24 @@ module DataLearning (VideoGame(VideoGame),
                      bestGame,
                      sortByRating,
                      sortByYear,
-                     sortByTitle) where
+                     sortByTitle,
+                     LinkedList(Node, Nil),
+                     append) where
 
 -- Public functions
 bestGame :: [VideoGame] -> Maybe VideoGame
 sortByRating :: [VideoGame] -> [VideoGame]
+append :: LinkedList a -> LinkedList a -> LinkedList a
 
 -- Public data
 data VideoGame = VideoGame { title :: String,
                              rating :: Float,
                              year :: Int } deriving (Show, Eq)
+
+data LinkedList a = Nil | Node a (LinkedList a)
+
+append node@(Node x nodes) Nil = node
+append (Node x ll) (Node y Nil) = Node y (Node x ll)
 
 -- Private functions
 betterGame :: VideoGame -> VideoGame -> VideoGame

@@ -27,12 +27,16 @@ testDeterminantWorksForTestThreeByThreeMatrix =
 testTheDeterminantOfTheZeroMatrixIsZeroForThreeDimensions =
   TestCase (assertEqual "Determinant of 0 Matrix is 0" [0, 0, 0] [determinant [[0]], determinant [[0, 0], [0, 0]], determinant [[0,0,0],[0,0,0],[0,0,0]]])
 
+testDeterminantWorksForTestFourByFourMatrix =
+  TestCase (assertEqual "Determinant of a 4x4 works" (-10406.0) (determinant [[8, 1, -12, 1], [0, 51, 3, -5], [-4, 12, 3, 3], [2, 1, 1, 2]]))
+
 tests = TestList [testDeterminantWorksForASimpleOneByOne,
                   testDeterminantWorksForASimpleTwoByTwo,
                   testDeterminantworksForAnotherSimpleTwoByTwo,
                   testGetRestWorksForAThreeByThreeForTheFirstSlot,
                   testGetRestWorksForAThreeByThreeForTheSecondSlot,
                   testDeterminantWorksForTestThreeByThreeMatrix,
-                  testTheDeterminantOfTheZeroMatrixIsZeroForThreeDimensions]
+                  testTheDeterminantOfTheZeroMatrixIsZeroForThreeDimensions,
+                  testDeterminantWorksForTestFourByFourMatrix]
 
 main = runTestTT tests

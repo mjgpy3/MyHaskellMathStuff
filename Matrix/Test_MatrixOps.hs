@@ -21,10 +21,18 @@ testGetRestWorksForAThreeByThreeForTheSecondSlot =
 testGetRestWorksForAThreeByThreeForTheThirdSlot =
   TestCase (assertEqual "Third slot can be removed by getRest" [[4,5], [7,8]] (getRest 2 [[1,2,3],[4,5,6],[7,8,9]]))
 
+testDeterminantWorksForTestThreeByThreeMatrix =
+  TestCase (assertEqual "Determinant of a 3x3 works" (-37.0) (determinant [[1, 2, 3], [5, 1, -1], [2, 0, 3]]))
+
+testTheDeterminantOfTheZeroMatrixIsZeroForThreeDimensions =
+  TestCase (assertEqual "Determinant of 0 Matrix is 0" [0, 0, 0] [determinant [[0]], determinant [[0, 0], [0, 0]], determinant [[0,0,0],[0,0,0],[0,0,0]]])
+
 tests = TestList [testDeterminantWorksForASimpleOneByOne,
                   testDeterminantWorksForASimpleTwoByTwo,
                   testDeterminantworksForAnotherSimpleTwoByTwo,
                   testGetRestWorksForAThreeByThreeForTheFirstSlot,
-                  testGetRestWorksForAThreeByThreeForTheSecondSlot]
+                  testGetRestWorksForAThreeByThreeForTheSecondSlot,
+                  testDeterminantWorksForTestThreeByThreeMatrix,
+                  testTheDeterminantOfTheZeroMatrixIsZeroForThreeDimensions]
 
 main = runTestTT tests

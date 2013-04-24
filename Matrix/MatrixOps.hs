@@ -4,9 +4,7 @@ determinant :: (Num a, Fractional a) => [[a]] -> a
 
 determinant [[x]] = x
 determinant mat =
- sum [s*x*(determinant (getRest i mat)) | i <- [0..n-1], let x = (head mat) !! i
-                                                             s = (-1)^i]
- where n = length $ head mat
+ sum [(-1)^i*x*(determinant (getRest i mat)) | (i, x) <- zip [0..] (head mat)]
 
 getRest :: (Num a, Fractional a) => Int -> [[a]] -> [[a]]
 

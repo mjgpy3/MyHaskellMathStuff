@@ -1,5 +1,7 @@
 module MatrixOps where
 
+import Data.List
+
 determinant :: (Num a, Fractional a) => [[a]] -> a
 
 determinant [[x]] = x
@@ -13,5 +15,5 @@ getRest i mat = removeCols i (tail mat)
 removeCols :: (Num a, Fractional a) => Int -> [[a]] -> [[a]]
 
 removeCols _ [] = []
-removeCols i (r:rs) = [r !! j | j <- [0..n-1], j /= i] : removeCols i rs
- where n = length r
+removeCols i (r:rs) = (left ++ (tail right)) : removeCols i rs
+ where (left, right) = splitAt i r

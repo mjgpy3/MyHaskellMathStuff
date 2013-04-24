@@ -3,7 +3,6 @@ module MatrixOps where
 determinant :: (Num a, Fractional a) => [[a]] -> a
 
 determinant [[x]] = x
-determinant [[w,x], [y,z]] = w*z - x*y
 determinant mat =
  sum [s*x*(determinant (getRest i mat)) | i <- [0..n-1], let x = (head mat) !! i
                                                              s = (-1)^i]

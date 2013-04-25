@@ -2,11 +2,6 @@ module EquationSystems where
 
 import MatrixOps
 
-solveTwoEquations :: (Num a, Fractional a) => [[a]] -> [a] -> [a]
-
--- Delete me after fixing the test
-solveTwoEquations a b = solveEquations a b 
-
 solveEquations :: (Num a, Fractional a) => [[a]] -> [a] -> [a]
 
 -- Solved equations of the form AX = B

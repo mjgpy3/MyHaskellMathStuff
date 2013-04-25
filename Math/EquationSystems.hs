@@ -1,4 +1,4 @@
-module EquationSystems where
+module EquationSystems (solveEquations) where
 
 import MatrixOps
 

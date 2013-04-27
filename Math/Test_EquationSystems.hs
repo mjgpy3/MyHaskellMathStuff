@@ -3,6 +3,7 @@ module Test_EquationSystems where
 import EquationSystems
 import Test.HUnit
 
+allAreWithinDelta :: (Num a, Ord a) => a -> [a] -> [a] -> Bool
 allAreWithinDelta _ [] [] = True
 allAreWithinDelta delta (v:vs) (e:es)
   | not (abs (e - v) < delta) = False

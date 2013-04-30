@@ -18,10 +18,14 @@ testFibListWorksForAListOfSizeTwo =
 testFibListWorksForAListOfSizeNine =
   TestCase (assertEqual "fibList 9 = [1,1,2,3,5,8,13,21,34]" [1,1,2,3,5,8,13,21,34] (fibList 9))
 
+testNthFibAndFibListAreConsistientForTheFirst20Fibs =
+  TestCase (assertEqual "fibList produces the same 100 first fibs as nthFib" (fibList 20) ([nthFib n | n <- [1..20]]))
+
 tests = TestList [testNthFibWorksForTheFirst10Fibs,
                   testFibListWorksForAListOfSizeZero,
                   testFibListWorksForAListOfSizeOne,
                   testFibListWorksForAListOfSizeTwo,
-                  testFibListWorksForAListOfSizeNine]
+                  testFibListWorksForAListOfSizeNine,
+                  testNthFibAndFibListAreConsistientForTheFirst20Fibs]
 
 main = runTestTT tests

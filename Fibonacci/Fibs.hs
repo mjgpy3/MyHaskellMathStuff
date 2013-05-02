@@ -16,5 +16,3 @@ constructFibList :: (Integral a) => [a] -> a -> [a]
 constructFibList xs 0 = xs
 constructFibList xs n = constructFibList (xs ++ [next]) (n-1)
   where next = (last (init xs)) + (last xs)
-
-main = print $ fibList 7
